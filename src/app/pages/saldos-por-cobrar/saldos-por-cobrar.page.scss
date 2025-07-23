@@ -1,0 +1,35 @@
+.busqueda-card {
+  margin-bottom: 16px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.factura-card {
+  margin-bottom: 16px;
+  border-radius: 12px;
+
+  ion-card-title.cliente-nombre {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #2c3e50;
+  }
+
+  ion-card-subtitle {
+    font-size: 0.85rem;
+    color: #7f8c8d;
+  }
+
+  ion-card-content p {
+    margin: 4px 0;
+    font-size: 0.95rem;
+  }
+
+  ion-badge {
+    font-size: 0.9rem;
+    padding: 6px 12px;
+  }
+
+  ion-back-button {
+  color: var(--ion-color-primary);
+}
+}

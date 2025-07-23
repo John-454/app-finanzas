@@ -1,0 +1,9 @@
+ion-card {
+  transition: transform 0.2s ease;
+  border-radius: 16px;
+
+  &:hover {
+    transform: scale(1.02);
+  }
+  margin-bottom: 6px;
+}

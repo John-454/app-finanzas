@@ -1,0 +1,39 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/saldos"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Nuevo Abono</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-item>
+    <ion-label position="floating">Nombre del Cliente</ion-label>
+    <ion-input [(ngModel)]="nombreCliente" placeholder="Buscar cliente..."></ion-input>
+  </ion-item>
+
+  <ion-button expand="block" class="ion-margin-top" (click)="buscarFactura()">Buscar</ion-button>
+
+  <div *ngIf="facturaEncontrada">
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>{{ facturaEncontrada.cliente }}</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <p><strong>Total:</strong> ${{ facturaEncontrada.total }}</p>
+        <p><strong>Abonado:</strong> ${{ facturaEncontrada.abono }}</p>
+        <p><strong>Saldo:</strong> ${{ facturaEncontrada.total - facturaEncontrada.abono }}</p>
+
+        <ion-item>
+          <ion-label position="floating">Nuevo Abono</ion-label>
+          <ion-input type="number" [(ngModel)]="nuevoAbono"></ion-input>
+        </ion-item>
+
+        <ion-button expand="block" color="success" class="ion-margin-top" (click)="registrarAbono()">
+          Registrar Abono
+        </ion-button>
+      </ion-card-content>
+    </ion-card>
+  </div>
+</ion-content>

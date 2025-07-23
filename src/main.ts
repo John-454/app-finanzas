@@ -5,6 +5,20 @@ import { IonicRouteStrategy, provideIonicAngular } from '@ionic/angular/standalo
 import { routes } from './app/app.routes';
 import { AppComponent } from './app/app.component';
 
+
+import { addIcons } from 'ionicons';
+import { receiptOutline, cubeOutline, searchOutline, cashOutline, addOutline, createOutline } from 'ionicons/icons';
+
+addIcons({
+  'receipt-outline': receiptOutline,
+  'cube-outline': cubeOutline,
+  'search-outline': searchOutline,
+  'cash-outline': cashOutline,
+  'add-outline': addOutline,
+  'create-outline': createOutline,
+});
+
+
 bootstrapApplication(AppComponent, {
   providers: [
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },

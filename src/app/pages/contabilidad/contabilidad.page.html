@@ -1,0 +1,58 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Contabilidad</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+  <!-- Resumen general -->
+  <ion-card class="resumen-card">
+    <ion-card-header>
+      <ion-card-title>Resumen Financiero General</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <p><strong>Total Vendido:</strong> ${{ totalVendido }}</p>
+      <p><strong>Total en Saldos:</strong> ${{ totalSaldoPendiente }}</p>
+      <div class="grafico-container">
+        <canvas id="graficoContabilidad"></canvas>
+      </div>
+    </ion-card-content>
+  </ion-card>
+
+  <!-- Búsqueda por cliente -->
+  <ion-card class="busqueda-card">
+    <ion-card-header>
+      <ion-card-title>Búsqueda por Cliente</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-item>
+        <ion-label position="floating">Nombre del cliente</ion-label>
+        <ion-input
+          type="text"
+          [(ngModel)]="terminoBusqueda"
+          (ionInput)="buscarPorCliente()"
+        ></ion-input>
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
+
+  <!-- Resumen por cliente -->
+  <ion-card *ngIf="clienteSeleccionado" class="cliente-card">
+    <ion-card-header>
+      <ion-card-title>Resumen de "{{ clienteSeleccionado }}"</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <p><strong>Total:</strong> ${{ resumenCliente.total }}</p>
+      <p><strong>Abonado:</strong> ${{ resumenCliente.abono }}</p>
+      <p><strong>Saldo:</strong> ${{ resumenCliente.saldo }}</p>
+      <div class="grafico-container">
+        <canvas id="graficoCliente"></canvas>
+      </div>
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>

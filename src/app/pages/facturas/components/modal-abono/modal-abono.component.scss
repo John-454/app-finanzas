@@ -1,0 +1,31 @@
+.resumen-card {
+  margin-bottom: 20px;
+  border-radius: 12px;
+
+  ion-card-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #2c3e50;
+  }
+
+  ion-card-subtitle {
+    font-size: 0.9rem;
+    color: #7f8c8d;
+  }
+
+  ion-card-content p {
+    margin: 6px 0;
+    font-size: 0.95rem;
+  }
+}
+
+ion-item {
+  --background: #060607;
+  border-radius: 8px;
+  margin-bottom: 12px;
+}
+
+ion-button {
+  font-weight: 600;
+  font-size: 1rem;
+}

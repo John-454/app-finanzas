@@ -1,0 +1,139 @@
+ion-back-button {
+  color: var(--ion-color-primary);
+}
+
+
+.card-input {
+  margin-bottom: 16px;
+
+  ion-icon {
+    color: #3880ff;
+  }
+
+  ion-card-title {
+    font-size: 1.1rem;
+    color: #ffffff;
+    
+  }
+}
+
+.card-busqueda {
+  margin-bottom: 16px;
+
+  ion-item {
+    --highlight-color-focused: #10dc60;
+    --border-radius: 8px;
+    --box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  }
+
+  ion-icon {
+    color: #10dc60;
+  }
+
+  ion-card-title {
+    font-size: 1.1rem;
+    color: #ffffff;
+    
+  }
+}
+
+.tabla-productos {
+  ion-card-title {
+    font-size: 1.1rem;
+    color: #ffffff;
+    margin-bottom: 8px;
+  }
+
+  .encabezado {
+    background: #000000;
+    font-weight: bold;
+    padding: 6px 0;
+  }
+
+  .fila {
+    border-bottom: 1px solid #e0e0e0;
+    padding: 6px 0;
+    align-items: center;
+  }
+
+  .cantidad-input {
+    --padding-start: 0;
+    text-align: center;
+  }
+
+  .boton-col {
+    text-align: center;
+  }
+}
+
+.lista-resultados {
+  margin-top: 10px;
+
+  ion-list-header {
+    font-weight: bold;
+    color: #333;
+    background: #f0f0f0;
+    border-radius: 8px 8px 0 0;
+  }
+
+  ion-item {
+    --border-color: #ddd;
+    --padding-start: 10px;
+    --inner-padding-end: 10px;
+    border-radius: 6px;
+    margin-bottom: 4px;
+
+    ion-icon {
+      font-size: 20px;
+    }
+
+    h3 {
+      font-size: 1rem;
+      margin: 0;
+    }
+
+    p {
+      margin: 2px 0 0 0;
+      font-size: 0.85rem;
+      color: #666;
+    }
+  }
+}
+
+.card-abono {
+  margin-top: 20px;
+
+  ion-card-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #ffffff;
+  }
+
+  ion-icon {
+    font-size: 20px;
+    margin-right: 8px;
+  }
+
+  ion-item {
+    --border-radius: 8px;
+    --highlight-color-focused: #10dc60;
+  }
+}
+
+.card-totales {
+  margin-top: 20px;
+
+  ion-card-title {
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #ffffff;
+  }
+
+  h3 {
+    margin: 0;
+    font-size: 1rem;
+  }
+}
+
+
+

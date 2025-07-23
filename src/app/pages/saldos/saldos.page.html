@@ -1,0 +1,27 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Abonos y Saldos</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content class="ion-padding">
+  <ion-button expand="block" color="primary" class="ion-margin-vertical" (click)="irASaldosPorCobrar()">
+    <ion-icon slot="start" name="cash-outline"></ion-icon>
+    Saldos por cobrar
+  </ion-button>
+
+
+  <ion-button expand="block" color="success" class="ion-margin-vertical" (click)="irANuevoAbono()">
+    <ion-icon slot="start" name="create-outline"></ion-icon>
+    Nuevo saldo
+  </ion-button>
+
+  <ion-button expand="block" color="medium" class="ion-margin-vertical" >
+    <ion-icon slot="start" name="search-outline"></ion-icon>
+    Historial de saldos
+  </ion-button>
+</ion-content>

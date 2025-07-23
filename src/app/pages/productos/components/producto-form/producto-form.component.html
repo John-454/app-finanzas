@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Nuevo Producto</ion-title>
+    <ion-buttons slot="end">
+      <ion-button fill="clear" color="light" (click)="cancelar()">Cerrar</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-card>
+    <ion-card-content>
+      <ion-item>
+        <ion-label position="floating">Nombre del Producto</ion-label>
+        <ion-input [(ngModel)]="producto.nombre" required></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Precio Unitario</ion-label>
+        <ion-input type="number" [(ngModel)]="producto.precioUnitario" required></ion-input>
+      </ion-item>
+
+      <ion-button expand="block" class="ion-margin-top" color="primary" (click)="guardar()">
+        Guardar Producto
+      </ion-button>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

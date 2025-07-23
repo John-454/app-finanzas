@@ -1,0 +1,62 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Busqueda de Facturas</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+  <ion-card class="busqueda-card">
+    <ion-item>
+      <ion-icon slot="start" name="search-outline"></ion-icon>
+      <ion-input
+        [(ngModel)]="terminoBusqueda"
+        placeholder="Buscar cliente por nombre"
+        (ionInput)="buscarFacturasPorCliente()"
+        clearInput
+      ></ion-input>
+    </ion-item>
+  </ion-card>
+
+  <ion-list *ngIf="facturasFiltradas.length > 0">
+    <ion-card *ngFor="let f of facturasFiltradas" class="factura-card">
+      <ion-card-header>
+        <ion-card-title class="cliente-nombre">{{ f.cliente }}</ion-card-title>
+        <ion-card-subtitle>Fecha: {{ f.createdAt | date: 'dd/MM/yyyy HH:mm' }}</ion-card-subtitle>
+      </ion-card-header>
+
+      <ion-card-content>
+        <p><strong>Total:</strong> ${{ f.total }}</p>
+        <p><strong>Abono:</strong> ${{ f.abono }}</p>
+        <p><strong>Saldo:</strong> ${{ calcularSaldo(f) }}</p>
+      </ion-card-content>
+
+      <ion-row class="ion-justify-content-end ion-padding-bottom">
+        <ion-col size="auto">
+          <ion-button
+            size="small"
+            color="success"
+            *ngIf="calcularSaldo(f) > 0"
+            (click)="abrirModalAbono(f)"
+          >
+            <ion-icon slot="start" name="cash-outline"></ion-icon>
+            Abonar
+          </ion-button>
+
+          <ion-badge color="medium" *ngIf="calcularSaldo(f) === 0">
+            Cancelado
+          </ion-badge>
+        </ion-col>
+      </ion-row>
+    </ion-card>
+  </ion-list>
+
+  <ion-text color="medium" *ngIf="facturasFiltradas.length === 0 && terminoBusqueda">
+    <p class="ion-text-center">No se encontraron facturas para ese cliente.</p>
+  </ion-text>
+
+</ion-content>
+

@@ -1,0 +1,174 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Crear Factura</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content class="ion-padding">
+
+  <!-- CLIENTE -->
+  <ion-card class="card-input">
+  <ion-card-header>
+    <ion-card-title>Información del Cliente</ion-card-title>
+  </ion-card-header>
+  <ion-card-content>
+    <ion-item lines="full">
+      <ion-icon name="person-outline" slot="start"></ion-icon>
+      <ion-label position="floating">Nombre del Cliente</ion-label>
+      <ion-input
+        [(ngModel)]="cliente"
+        placeholder=""
+        type="text"
+        clearInput="true">
+      </ion-input>
+    </ion-item>
+  </ion-card-content>
+</ion-card>
+
+
+  <!-- BUSCADOR DE PRODUCTOS -->
+  <ion-card class="card-busqueda">
+  <ion-card-header>
+    <ion-card-title>Buscar Producto</ion-card-title>
+  </ion-card-header>
+  <ion-card-content>
+    <ion-item lines="full">
+      <ion-icon name="search-outline" slot="start"></ion-icon>
+      <ion-input
+        [(ngModel)]="terminoBusqueda"
+        (ionInput)="buscarProducto()"
+        placeholder="Escribe el nombre del producto"
+        type="text"
+        clearInput="true">
+      </ion-input>
+    </ion-item>
+  </ion-card-content>
+</ion-card>
+
+
+  <!-- RESULTADOS DE BÚSQUEDA -->
+  <ion-list *ngIf="productosFiltrados.length > 0" class="lista-resultados">
+  
+
+  <ion-item
+    *ngFor="let producto of productosFiltrados"
+    button
+    detail
+    (click)="seleccionarProducto(producto)">
+    
+    <ion-icon name="pricetag-outline" slot="start" color="primary"></ion-icon>
+    
+    <ion-label>
+      <h3>{{ producto.nombre }}</h3>
+      <p>Precio: ${{ producto.precioUnitario }}</p>
+    </ion-label>
+  </ion-item>
+</ion-list>
+
+<ion-item *ngIf="productosFiltrados.length === 0 && terminoBusqueda.trim().length > 0">
+  <ion-label>
+    No se encontraron productos.  
+    <br>
+    <ion-button fill="outline" color="primary" (click)="abrirModalAgregarProducto()">
+      ➕ Agregar "{{ terminoBusqueda }}"
+    </ion-button>
+  </ion-label>
+</ion-item>
+
+
+  <!-- TABLA DE PRODUCTOS SELECCIONADOS -->
+  <ion-card class="tabla-productos">
+  <ion-card-header>
+    <ion-card-title>Productos Agregados</ion-card-title>
+  </ion-card-header>
+  <ion-card-content>
+    <ion-grid>
+      <ion-row class="encabezado">
+        <ion-col size="3"><strong>Producto</strong></ion-col>
+        <ion-col size="2"><strong>Precio</strong></ion-col>
+        <ion-col size="2"><strong>Cant.</strong></ion-col>
+        <ion-col size="2"><strong>Total</strong></ion-col>
+      </ion-row>
+
+      <ion-row *ngFor="let item of factura.productos; let i = index" class="fila">
+        <ion-col size="3">{{ item.nombre }}</ion-col>
+        <ion-col size="2">${{ item.precioUnitario }}</ion-col>
+        <ion-col size="2">
+          <ion-input
+            type="number"
+            [(ngModel)]="item.cantidad"
+            (ionInput)="actualizarTotales()"
+            class="cantidad-input">
+          </ion-input>
+        </ion-col>
+        <ion-col size="2">${{ item.precioUnitario * item.cantidad }}</ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-card-content>
+</ion-card>
+
+
+<!-- ABONO -->
+  <ion-card class="card-abono">
+  <ion-card-header>
+    <ion-card-title>Abono del Cliente</ion-card-title>
+  </ion-card-header>
+  <ion-card-content>
+    <ion-item lines="full">
+      <ion-icon name="cash-outline" slot="start" color="success"></ion-icon>
+      <ion-label position="floating">Abono</ion-label>
+      <ion-input
+        type="number"
+        [(ngModel)]="factura.abono"
+        (ionInput)="actualizarTotales()"
+        placeholder="Ingrese el abono">
+      </ion-input>
+    </ion-item>
+  </ion-card-content>
+</ion-card>
+
+   <!-- SALDO -->
+  <ion-card class="card-totales" *ngIf="factura.productos.length > 0">
+  <ion-card-header>
+    <ion-card-title>Resumen</ion-card-title>
+  </ion-card-header>
+  <ion-card-content>
+    <ion-grid>
+      <ion-row class="ion-justify-content-between">
+        <ion-col size="6">
+          <ion-text color="medium">
+            <h3>Saldo:</h3>
+          </ion-text>
+        </ion-col>
+        <ion-col size="6" class="ion-text-end">
+          <ion-text color="danger">
+            <h3>${{ factura.total - (factura.abono || 0) | number:'1.0-0' }}</h3>
+          </ion-text>
+        </ion-col>
+      </ion-row>
+      <ion-row class="ion-justify-content-between">
+        <ion-col size="6">
+          <ion-text color="medium">
+            <h3>Total:</h3>
+          </ion-text>
+        </ion-col>
+        <ion-col size="6" class="ion-text-end">
+          <ion-text color="dark">
+            <h3>${{ factura.total | number:'1.0-0' }}</h3>
+          </ion-text>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-card-content>
+</ion-card>
+
+
+  <!-- BOTÓN GUARDAR -->
+  <ion-button expand="block" color="success" (click)="guardarFactura()">
+    Guardar Factura
+  </ion-button>
+</ion-content>
