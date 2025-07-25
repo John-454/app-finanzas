@@ -1,0 +1,31 @@
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: var(--ion-background-color);
+  color: var(--ion-text-color);
+}
+
+ion-content {
+  --background: #121212;
+}
+
+ion-header,
+ion-toolbar {
+  --background: #1e1e1e;
+  --color: #ffffff;
+}
+
+ion-item {
+  --background: #1e1e1e;
+  --color: #ffffff;
+  border-radius: 10px;
+  margin-bottom: 8px;
+}
+
+ion-button {
+  --border-radius: 10px;
+}
+
+ion-modal {
+  --background: #1e1e1e;
+  color: white;
+}
